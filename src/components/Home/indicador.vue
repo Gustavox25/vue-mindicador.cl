@@ -11,8 +11,9 @@
       <v-row>
         <v-col>
           <v-btn v-on:click="llamarIndicador">
-            Llamar función
+            Llamar dolar
           </v-btn>
+          <v-btn v-on:click='llamarIndicadorconfecha'></v-btn>
         </v-col>
       </v-row>
     </v-col>
@@ -36,6 +37,17 @@ export default {
         this.valor = respuesta.data.serie[0].valor
         this.fecha = respuesta.data.serie[0].fecha
       })
+    },
+    llamarIndicadorconfecha(){
+      ApiIndicador.get('/dolar/'+this.propfecha).then(respuesta => {
+        console.log(respuesta)
+        this.indicador = respuesta.data.nombre
+        this.valor = respuesta.data.serie[0].valor
+        this.fecha = respuesta.data.serie[0].fecha
+      })
+
+
+
     }
   }
 }
